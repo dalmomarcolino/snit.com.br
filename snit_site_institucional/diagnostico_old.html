@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Reputacional - SN IT</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>SN IT</h1>
+                <span>Diagnóstico Reputacional</span>
+            </div>
+            <div class="header-info">
+                <p>Avalie a maturidade reputacional da sua empresa</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Formulário de Diagnóstico -->
+        <section id="assessment-form" class="assessment-section">
+            <div class="container">
+                <div class="intro-card">
+                    <h2>Diagnóstico de Reputação Digital</h2>
+                    <p>Responda às perguntas abaixo para receber uma análise completa da maturidade reputacional da sua empresa. Este diagnóstico é <strong>gratuito</strong> e leva apenas 5 minutos para ser concluído.</p>
+                    <div class="benefits">
+                        <div class="benefit">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Análise visual detalhada</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Identificação de riscos</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Recomendações personalizadas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="diagnostic-form" class="diagnostic-form">
+                    <!-- Informações da Empresa -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-building"></i> Informações da Empresa</h3>
+                        <div class="form-group">
+                            <label for="company-name">Nome da Empresa</label>
+                            <input type="text" id="company-name" name="companyName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company-sector">Setor</label>
+                                <select id="company-sector" name="companySector" required>
+                                    <option value="">Selecione o setor</option>
+                                    <option value="financeiro">Financeiro</option>
+                                    <option value="saude">Saúde</option>
+                                    <option value="varejo">Varejo</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="tecnologia">Tecnologia</option>
+                                    <option value="servicos">Serviços</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="company-size">Porte da Empresa</label>
+                                <select id="company-size" name="companySize" required>
+                                    <option value="">Selecione o porte</option>
+                                    <option value="pequena">Pequena (até 50 funcionários)</option>
+                                    <option value="media">Média (51-250 funcionários)</option>
+                                    <option value="grande">Grande (251-1000 funcionários)</option>
+                                    <option value="multinacional">Multinacional (1000+ funcionários)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">E-mail para receber o resultado</label>
+                            <input type="email" id="contact-email" name="contactEmail" required>
+                        </div>
+                    </div>
+
+                    <!-- Dimensão 1: Segurança da Informação -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Segurança da Informação</h3>
+                        <div class="question-group">
+                            <div class="question">
+                                <label>1. Como você avalia a maturidade dos controles de segurança da informação da sua empresa?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="security1" value="1"> Controles básicos ou inexistentes</label>
+                                    <label><input type="radio" name="security1" value="2"> Alguns controles implementados</label>
+                                    <label><input type="radio" name="security1" value="3"> Controles adequados para o setor</label>
+                                    <label><input type="radio" name="security1" value="4"> Controles avançados e bem estruturados</label>
+                                    <label><input type="radio" name="security1" value="5"> Referência em segurança no mercado</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>2. Qual o nível de preparação da sua empresa para responder a incidentes de segurança?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="security2" value="1"> Sem plano de resposta estruturado</label>
+                                    <label><input type="radio" name="security2" value="2"> Plano básico em desenvolvimento</label>
+                                    <label><input type="radio" name="security2" value="3"> Plano definido e testado ocasionalmente</label>
+                                    <label><input type="radio" name="security2" value="4"> Plano robusto com testes regulares</label>
+                                    <label><input type="radio" name="security2" value="5"> Centro de operações 24/7 com resposta imediata</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>3. Como está a conscientização dos colaboradores sobre segurança da informação?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="security3" value="1"> Baixa conscientização, sem treinamentos</label>
+                                    <label><input type="radio" name="security3" value="2"> Treinamentos esporádicos</label>
+                                    <label><input type="radio" name="security3" value="3"> Programa de conscientização regular</label>
+                                    <label><input type="radio" name="security3" value="4"> Cultura de segurança bem estabelecida</label>
+                                    <label><input type="radio" name="security3" value="5"> Colaboradores como embaixadores de segurança</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimensão 2: Infraestrutura Digital -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-server"></i> Infraestrutura Digital</h3>
+                        <div class="question-group">
+                            <div class="question">
+                                <label>4. Qual o nível de disponibilidade e confiabilidade da sua infraestrutura de TI?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="infrastructure1" value="1"> Frequentes indisponibilidades e problemas</label>
+                                    <label><input type="radio" name="infrastructure1" value="2"> Disponibilidade básica com algumas interrupções</label>
+                                    <label><input type="radio" name="infrastructure1" value="3"> Boa disponibilidade com SLA definido</label>
+                                    <label><input type="radio" name="infrastructure1" value="4"> Alta disponibilidade com redundância</label>
+                                    <label><input type="radio" name="infrastructure1" value="5"> Infraestrutura de missão crítica 99.9%+</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>5. Como está a escalabilidade da sua infraestrutura para crescimento do negócio?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="infrastructure2" value="1"> Limitações significativas para crescimento</label>
+                                    <label><input type="radio" name="infrastructure2" value="2"> Capacidade limitada de expansão</label>
+                                    <label><input type="radio" name="infrastructure2" value="3"> Escalabilidade adequada para demanda atual</label>
+                                    <label><input type="radio" name="infrastructure2" value="4"> Boa capacidade de expansão planejada</label>
+                                    <label><input type="radio" name="infrastructure2" value="5"> Infraestrutura elástica e auto-escalável</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>6. Qual o nível de monitoramento e observabilidade da sua infraestrutura?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="infrastructure3" value="1"> Monitoramento básico ou inexistente</label>
+                                    <label><input type="radio" name="infrastructure3" value="2"> Monitoramento de componentes críticos</label>
+                                    <label><input type="radio" name="infrastructure3" value="3"> Dashboards e alertas configurados</label>
+                                    <label><input type="radio" name="infrastructure3" value="4"> Monitoramento proativo com métricas avançadas</label>
+                                    <label><input type="radio" name="infrastructure3" value="5"> Observabilidade completa com IA preditiva</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimensão 3: Gestão de Terceiros -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-handshake"></i> Gestão de Terceiros</h3>
+                        <div class="question-group">
+                            <div class="question">
+                                <label>7. Como é realizada a avaliação e seleção de fornecedores críticos?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="vendors1" value="1"> Processo informal sem critérios definidos</label>
+                                    <label><input type="radio" name="vendors1" value="2"> Critérios básicos de seleção</label>
+                                    <label><input type="radio" name="vendors1" value="3"> Processo estruturado com due diligence</label>
+                                    <label><input type="radio" name="vendors1" value="4"> Avaliação rigorosa incluindo riscos reputacionais</label>
+                                    <label><input type="radio" name="vendors1" value="5"> Processo de homologação com auditoria contínua</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>8. Qual o nível de monitoramento contínuo dos fornecedores?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="vendors2" value="1"> Sem monitoramento após contratação</label>
+                                    <label><input type="radio" name="vendors2" value="2"> Avaliação anual básica</label>
+                                    <label><input type="radio" name="vendors2" value="3"> Monitoramento regular de performance</label>
+                                    <label><input type="radio" name="vendors2" value="4"> Monitoramento integrado com alertas</label>
+                                    <label><input type="radio" name="vendors2" value="5"> Monitoramento em tempo real com IA</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>9. Como está estruturada a gestão de contratos e SLAs com terceiros?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="vendors3" value="1"> Contratos básicos sem SLAs definidos</label>
+                                    <label><input type="radio" name="vendors3" value="2"> SLAs básicos sem monitoramento</label>
+                                    <label><input type="radio" name="vendors3" value="3"> SLAs definidos com acompanhamento manual</label>
+                                    <label><input type="radio" name="vendors3" value="4"> SLAs robustos com monitoramento automatizado</label>
+                                    <label><input type="radio" name="vendors3" value="5"> Gestão integrada com penalidades e bonificações</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimensão 4: Presença Digital -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-globe"></i> Presença Digital</h3>
+                        <div class="question-group">
+                            <div class="question">
+                                <label>10. Como você avalia a consistência da presença digital da sua empresa?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="digital1" value="1"> Presença inconsistente ou desatualizada</label>
+                                    <label><input type="radio" name="digital1" value="2"> Presença básica em alguns canais</label>
+                                    <label><input type="radio" name="digital1" value="3"> Presença consistente nos principais canais</label>
+                                    <label><input type="radio" name="digital1" value="4"> Estratégia digital integrada e atualizada</label>
+                                    <label><input type="radio" name="digital1" value="5"> Liderança digital no setor</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>11. Qual o nível de engajamento e interação com stakeholders digitais?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="digital2" value="1"> Baixo engajamento ou interação reativa</label>
+                                    <label><input type="radio" name="digital2" value="2"> Interação básica quando necessário</label>
+                                    <label><input type="radio" name="digital2" value="3"> Engajamento regular com stakeholders</label>
+                                    <label><input type="radio" name="digital2" value="4"> Estratégia proativa de relacionamento digital</label>
+                                    <label><input type="radio" name="digital2" value="5"> Comunidade engajada e advocacy espontâneo</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>12. Como está o monitoramento da reputação online da empresa?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="digital3" value="1"> Sem monitoramento estruturado</label>
+                                    <label><input type="radio" name="digital3" value="2"> Monitoramento esporádico manual</label>
+                                    <label><input type="radio" name="digital3" value="3"> Ferramentas básicas de monitoramento</label>
+                                    <label><input type="radio" name="digital3" value="4"> Monitoramento automatizado com alertas</label>
+                                    <label><input type="radio" name="digital3" value="5"> Inteligência de mercado com análise preditiva</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimensão 5: Resposta a Incidentes -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Resposta a Incidentes</h3>
+                        <div class="question-group">
+                            <div class="question">
+                                <label>13. Qual o nível de preparação para gerenciar crises reputacionais?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="incident1" value="1"> Sem plano de gestão de crise</label>
+                                    <label><input type="radio" name="incident1" value="2"> Plano básico não testado</label>
+                                    <label><input type="radio" name="incident1" value="3"> Plano definido com testes ocasionais</label>
+                                    <label><input type="radio" name="incident1" value="4"> Plano robusto com simulações regulares</label>
+                                    <label><input type="radio" name="incident1" value="5"> Centro de comando 24/7 para gestão de crises</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>14. Como está estruturada a comunicação durante incidentes?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="incident2" value="1"> Comunicação ad-hoc sem protocolo</label>
+                                    <label><input type="radio" name="incident2" value="2"> Protocolo básico de comunicação</label>
+                                    <label><input type="radio" name="incident2" value="3"> Plano de comunicação estruturado</label>
+                                    <label><input type="radio" name="incident2" value="4"> Comunicação integrada multi-canal</label>
+                                    <label><input type="radio" name="incident2" value="5"> Comunicação proativa com stakeholders</label>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <label>15. Qual a capacidade de recuperação pós-incidente?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="incident3" value="1"> Recuperação lenta sem processo definido</label>
+                                    <label><input type="radio" name="incident3" value="2"> Processo básico de recuperação</label>
+                                    <label><input type="radio" name="incident3" value="3"> Plano de continuidade estruturado</label>
+                                    <label><input type="radio" name="incident3" value="4"> Recuperação rápida com lições aprendidas</label>
+                                    <label><input type="radio" name="incident3" value="5"> Resiliência com melhoria contínua</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-chart-bar"></i>
+                            Gerar Diagnóstico
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard de Resultados -->
+        <section id="results-dashboard" class="results-section" style="display: none;">
+            <div class="container">
+                <div class="results-header">
+                    <h2>Diagnóstico de Reputação Digital</h2>
+                    <div class="company-info">
+                        <h3 id="result-company-name"></h3>
+                        <span id="result-company-details"></span>
+                    </div>
+                </div>
+
+                <div class="results-grid">
+                    <!-- Índice Geral -->
+                    <div class="result-card main-score">
+                        <h3>Índice de Maturidade Reputacional</h3>
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <canvas id="scoreGauge" width="200" height="200"></canvas>
+                                <div class="score-value">
+                                    <span id="overall-score">0</span>
+                                    <small>/100</small>
+                                </div>
+                            </div>
+                            <div class="score-description">
+                                <h4 id="maturity-level">Calculando...</h4>
+                                <p id="maturity-description">Processando resultados...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico Radar das Dimensões -->
+                    <div class="result-card">
+                        <h3>Análise por Dimensão</h3>
+                        <div class="chart-container">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Vulnerabilidades Críticas -->
+                    <div class="result-card">
+                        <h3>Vulnerabilidades Críticas</h3>
+                        <div id="vulnerabilities-list" class="vulnerabilities">
+                            <!-- Será preenchido dinamicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Pontos Fortes -->
+                    <div class="result-card">
+                        <h3>Pontos Fortes</h3>
+                        <div id="strengths-list" class="strengths">
+                            <!-- Será preenchido dinamicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Recomendações Prioritárias -->
+                    <div class="result-card full-width">
+                        <h3>Recomendações Prioritárias</h3>
+                        <div id="recommendations-list" class="recommendations">
+                            <!-- Será preenchido dinamicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Próximos Passos -->
+                    <div class="result-card full-width next-steps">
+                        <h3>Como a SN IT pode ajudar</h3>
+                        <div class="steps-grid">
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Análise Detalhada</h4>
+                                    <p>Mapeamento completo dos riscos reputacionais específicos da sua empresa</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Implementação</h4>
+                                    <p>Soluções personalizadas com nossos parceiros Equinix, Megaport, FWD e Executiva</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Monitoramento</h4>
+                                    <p>Acompanhamento contínuo da evolução da sua reputação digital</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-section">
+                            <p>Quer transformar esses insights em ações concretas?</p>
+                            <button class="btn-cta" onclick="openContactModal()">
+                                <i class="fas fa-phone"></i>
+                                Agendar Consulta Gratuita
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Contato -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h3>Agendar Consulta Gratuita</h3>
+            <p>Nossa equipe entrará em contato para apresentar soluções personalizadas para sua empresa.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Nome Completo</label>
+                    <input type="text" id="contact-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-phone">Telefone</label>
+                    <input type="tel" id="contact-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-position">Cargo</label>
+                    <input type="text" id="contact-position" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-urgency">Urgência</label>
+                    <select id="contact-urgency" required>
+                        <option value="">Selecione</option>
+                        <option value="alta">Alta - Preciso de uma solução imediata</option>
+                        <option value="media">Média - Gostaria de implementar em 30-60 dias</option>
+                        <option value="baixa">Baixa - Estou avaliando opções</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-calendar"></i>
+                    Solicitar Contato
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>SN IT</h3>
+                    <p>Protegendo e fortalecendo a reputação digital das empresas</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> +55 11 3136-0741</p>
+                    <p><i class="fas fa-envelope"></i> contato@snit.com.br</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
