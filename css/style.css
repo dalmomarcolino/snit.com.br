@@ -167,9 +167,21 @@ section p {
 
 .solutions {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 3rem;
+}
+
+@media (max-width: 1200px) {
+    .solutions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .solutions {
+        grid-template-columns: 1fr;
+    }
 }
 
 .solution-item {
@@ -228,9 +240,21 @@ section p {
 
 .partner-logos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 3rem;
+}
+
+@media (max-width: 1200px) {
+    .partner-logos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .partner-logos {
+        grid-template-columns: 1fr;
+    }
 }
 
 .partner-item {

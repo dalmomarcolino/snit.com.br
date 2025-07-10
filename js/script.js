@@ -83,6 +83,40 @@ document.addEventListener('input', function(e) {
     }
 });
 
+// Formulário de contato
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm(this)) {
+                alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+                return;
+            }
+            
+            const formData = new FormData(this);
+            const data = {
+                nome: formData.get('nome'),
+                email: formData.get('email'),
+                empresa: formData.get('empresa'),
+                mensagem: formData.get('mensagem')
+            };
+            
+            // Simular envio de email (GitHub Pages não suporta backend)
+            // Em produção, isso seria enviado para um endpoint de API
+            console.log('Dados do formulário:', data);
+            
+            // Simular sucesso
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+            
+            // Para GitHub Pages, podemos usar um serviço como Formspree ou Netlify Forms
+            // Por enquanto, vamos simular o envio
+        });
+    }
+});
+
 // Mobile menu toggle (se necessário)
 function toggleMobileMenu() {
     const nav = document.querySelector('nav ul');

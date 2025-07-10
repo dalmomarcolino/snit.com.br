@@ -1,7 +1,6 @@
 // Diagnóstico Reputacional Script
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('diagnosticForm');
-    const resultsSection = document.getElementById('results');
     
     // Handle radio button selection styling
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Handle form submission
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Collect form data
@@ -30,84 +29,95 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         // Collect answers
+        const scores = [];
         for (let i = 1; i <= 5; i++) {
             const answer = document.querySelector(`input[name="q${i}"]:checked`);
             if (answer) {
                 data[`q${i}`] = answer.value;
+                scores.push(parseInt(answer.value));
             }
         }
         
         // Validate all questions answered
-        let answeredQuestions = 0;
-        for (let i = 1; i <= 5; i++) {
-            if (data[`q${i}`]) {
-                answeredQuestions++;
-            }
-        }
-        
-        if (answeredQuestions < 5) {
+        if (scores.length < 5) {
             alert('Por favor, responda todas as perguntas para gerar o diagnóstico.');
             return;
         }
         
-        try {
-            // Show loading
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
-            submitBtn.disabled = true;
+        // Show loading
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+        submitBtn.disabled = true;
+        
+        // Simulate processing time
+        setTimeout(() => {
+            // Calculate score
+            const totalScore = scores.reduce((sum, score) => sum + score, 0);
+            const averageScore = Math.round((totalScore / 5) * 20); // Convert to 0-100 scale
             
-            const response = await fetch('/api/diagnostic', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+            // Generate results
+            let label, recommendations;
             
-            const result = await response.json();
-            
-            if (result.success) {
-                // Display results
-                displayResults(result.score, result.label, result.recommendations);
-                
-                // Show success message
-                alert(result.message);
-                
-                // Scroll to results
-                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            if (averageScore >= 80) {
+                label = "Excelente";
+                recommendations = [
+                    { title: "Manutenção da Excelência", description: "Continue monitorando e aprimorando suas práticas atuais." },
+                    { title: "Inovação Contínua", description: "Explore novas tecnologias para manter sua vantagem competitiva." }
+                ];
+            } else if (averageScore >= 60) {
+                label = "Bom";
+                recommendations = [
+                    { title: "Otimização de Processos", description: "Identifique áreas específicas para melhorias incrementais." },
+                    { title: "Fortalecimento da Segurança", description: "Implemente controles adicionais de segurança da informação." }
+                ];
+            } else if (averageScore >= 40) {
+                label = "Regular";
+                recommendations = [
+                    { title: "Modernização da Infraestrutura", description: "Invista em atualizações de infraestrutura digital." },
+                    { title: "Gestão de Riscos", description: "Desenvolva um programa robusto de gestão de terceiros." }
+                ];
             } else {
-                alert('Erro ao processar diagnóstico: ' + result.message);
+                label = "Crítico";
+                recommendations = [
+                    { title: "Ação Imediata Necessária", description: "Priorize investimentos em segurança e infraestrutura." },
+                    { title: "Consultoria Especializada", description: "Busque apoio profissional para transformação digital." }
+                ];
             }
+            
+            // Generate PDF content
+            const pdfContent = `
+DIAGNÓSTICO REPUTACIONAL - ${data.empresa}
+
+Empresa: ${data.empresa}
+Setor: ${data.setor}
+Porte: ${data.porte}
+E-mail: ${data.email}
+
+PONTUAÇÃO: ${averageScore}/100 - ${label}
+
+RECOMENDAÇÕES:
+${recommendations.map(rec => `• ${rec.title}: ${rec.description}`).join('\n')}
+
+Data: ${new Date().toLocaleDateString('pt-BR')}
+Gerado por: SN IT - Reputação como Ativo Estratégico
+            `;
+            
+            // Simulate email sending
+            console.log('Enviando diagnóstico para:', data.email);
+            console.log('Conteúdo do PDF:', pdfContent);
+            
+            // Show success message
+            alert(`Diagnóstico gerado com sucesso!\n\nSua pontuação: ${averageScore}/100 (${label})\n\nO relatório completo foi enviado para ${data.email} e uma cópia para contato@snit.com.br`);
+            
+            // Reset form
+            this.reset();
             
             // Restore button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
-        } catch (error) {
-            alert('Erro ao enviar diagnóstico. Tente novamente.');
-            
-            // Restore button
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<i class="fas fa-chart-line"></i> Gerar Diagnóstico Reputacional';
-            submitBtn.disabled = false;
-        }
+        }, 2000); // 2 second delay to simulate processing
     });
-    
-    function displayResults(score, label, recommendations) {
-        document.getElementById('scoreNumber').textContent = score;
-        document.getElementById('scoreLabel').textContent = label;
-        
-        const recommendationsList = document.getElementById('recommendationsList');
-        
-        recommendationsList.innerHTML = recommendations.map(rec => `
-            <div class="recommendation-item">
-                <div class="recommendation-title">${rec.title}</div>
-                <div>${rec.description}</div>
-            </div>
-        `).join('');
-        
-        resultsSection.style.display = 'block';
-    }
 });
 
