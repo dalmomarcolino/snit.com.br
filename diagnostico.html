@@ -6,185 +6,296 @@
     <title>Diagnóstico Reputacional - SN IT</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Estilos específicos para o diagnóstico */
-        .diagnostic-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-            color: var(--white);
-            padding: 120px 0 60px;
-            text-align: center;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .diagnostic-container {
-            max-width: 800px;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 20px;
         }
-        
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2563eb;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        .diagnostic-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .diagnostic-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .diagnostic-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Form Styles */
+        .diagnostic-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
         .form-section {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--gray-200);
+            margin-bottom: 2.5rem;
         }
-        
+
         .form-section h3 {
-            color: var(--dark-color);
+            color: #2563eb;
             margin-bottom: 1.5rem;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: #374151;
         }
-        
+
         .form-group input,
         .form-group select {
             width: 100%;
             padding: 0.75rem;
-            border: 2px solid var(--gray-200);
+            border: 2px solid #e5e7eb;
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary-color);
+            border-color: #2563eb;
         }
-        
-        .question-group {
+
+        /* Question Styles */
+        .question {
             margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
         }
-        
-        .question-title {
-            font-weight: 600;
+
+        .question h4 {
             margin-bottom: 1rem;
-            color: var(--dark-color);
+            color: #1f2937;
+            font-size: 1.1rem;
         }
-        
-        .radio-group {
+
+        .radio-options {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
         }
-        
+
         .radio-option {
             display: flex;
             align-items: center;
             padding: 0.75rem;
-            border: 2px solid var(--gray-200);
+            background: white;
+            border: 2px solid #e5e7eb;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .radio-option:hover {
-            border-color: var(--primary-color);
-            background: var(--gray-100);
+            border-color: #2563eb;
+            background: #eff6ff;
         }
-        
+
+        .radio-option.selected {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
         .radio-option input[type="radio"] {
             margin-right: 0.75rem;
+            width: auto;
         }
-        
-        .radio-option.selected {
-            border-color: var(--primary-color);
-            background: rgba(37, 99, 235, 0.05);
-        }
-        
-        .submit-btn {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .submit-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        
-        .results-section {
-            display: none;
-            margin-top: 2rem;
-        }
-        
-        .score-display {
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-            color: var(--white);
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-        
-        .score-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .score-label {
-            font-size: 1.25rem;
-            opacity: 0.9;
-        }
-        
-        .recommendations {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .recommendation-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            border-left: 4px solid var(--primary-color);
-            background: var(--gray-100);
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .recommendation-title {
-            font-weight: 600;
-            color: var(--dark-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .back-to-site {
-            text-align: center;
-            margin-top: 2rem;
-        }
-        
-        .back-to-site a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
+
+        /* Button Styles */
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        .back-to-site a:hover {
-            text-decoration: underline;
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-large {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Results Section */
+        .results {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .results h2 {
+            text-align: center;
+            color: #2563eb;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #2563eb;
+            display: block;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .recommendations {
+            margin-top: 2rem;
+        }
+
+        .recommendations h3 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .recommendation-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #2563eb;
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .diagnostic-header h1 {
+                font-size: 2rem;
+            }
+
+            .diagnostic-form {
+                padding: 2rem;
+            }
+
+            .radio-options {
+                gap: 0.5rem;
+            }
+
+            .radio-option {
+                padding: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -194,7 +305,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="nav-brand">
-                    <h1>SNIT</h1>
+                    <img src="img/logo.jpg" alt="SNIT Logo">
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Voltar ao Site</a></li>
@@ -203,21 +314,20 @@
         </nav>
     </header>
 
-    <!-- Diagnostic Header -->
-    <section class="diagnostic-header">
+    <!-- Main Content -->
+    <main class="main-content">
         <div class="container">
-            <h1>Diagnóstico Reputacional Gratuito</h1>
-            <p>Descubra o nível de maturidade da reputação digital da sua empresa</p>
-        </div>
-    </section>
+            <!-- Header -->
+            <div class="diagnostic-header">
+                <h1>Diagnóstico Reputacional</h1>
+                <p>Descubra como está a reputação digital da sua empresa</p>
+            </div>
 
-    <!-- Diagnostic Form -->
-    <section class="diagnostic-form">
-        <div class="diagnostic-container">
-            <form id="diagnosticForm">
-                <!-- Informações da Empresa -->
+            <!-- Diagnostic Form -->
+            <form class="diagnostic-form" id="diagnosticForm">
+                <!-- Company Information -->
                 <div class="form-section">
-                    <h3><i class="fas fa-building"></i> Informações da Empresa</h3>
+                    <h3>Informações da Empresa</h3>
                     <div class="form-group">
                         <label for="empresa">Nome da Empresa *</label>
                         <input type="text" id="empresa" name="empresa" required>
@@ -231,7 +341,7 @@
                             <option value="saude">Saúde</option>
                             <option value="educacao">Educação</option>
                             <option value="varejo">Varejo</option>
-                            <option value="manufatura">Manufatura</option>
+                            <option value="industria">Indústria</option>
                             <option value="servicos">Serviços</option>
                             <option value="outro">Outro</option>
                         </select>
@@ -241,311 +351,176 @@
                         <select id="porte" name="porte" required>
                             <option value="">Selecione o porte</option>
                             <option value="micro">Microempresa (até 9 funcionários)</option>
-                            <option value="pequena">Pequena empresa (10-49 funcionários)</option>
-                            <option value="media">Média empresa (50-249 funcionários)</option>
-                            <option value="grande">Grande empresa (250+ funcionários)</option>
+                            <option value="pequena">Pequena (10-49 funcionários)</option>
+                            <option value="media">Média (50-249 funcionários)</option>
+                            <option value="grande">Grande (250+ funcionários)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email para receber o resultado *</label>
+                        <label for="email">E-mail para receber o resultado *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                 </div>
 
-                <!-- Perguntas do Diagnóstico -->
+                <!-- Questions -->
                 <div class="form-section">
-                    <h3><i class="fas fa-clipboard-check"></i> Avaliação Reputacional</h3>
+                    <h3>Avaliação Reputacional</h3>
                     
-                    <!-- Pergunta 1 -->
-                    <div class="question-group">
-                        <div class="question-title">1. Como você avalia a segurança da infraestrutura de TI da sua empresa?</div>
-                        <div class="radio-group">
+                    <div class="question">
+                        <h4>1. Como você avalia a infraestrutura digital atual da sua empresa?</h4>
+                        <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="q1" value="1">
-                                Muito insegura, sem controles adequados
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q1" value="2">
-                                Insegura, com controles básicos
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q1" value="3">
-                                Razoável, com alguns controles implementados
+                                <input type="radio" name="q1" value="5">
+                                Excelente - Infraestrutura robusta e confiável
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="q1" value="4">
-                                Segura, com controles robustos
+                                Boa - Atende às necessidades atuais
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="q1" value="5">
-                                Muito segura, com controles de classe mundial
+                                <input type="radio" name="q1" value="3">
+                                Regular - Precisa de melhorias
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q1" value="2">
+                                Ruim - Frequentes problemas
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q1" value="1">
+                                Péssima - Infraestrutura inadequada
                             </label>
                         </div>
                     </div>
 
-                    <!-- Pergunta 2 -->
-                    <div class="question-group">
-                        <div class="question-title">2. Qual o nível de disponibilidade dos seus sistemas críticos?</div>
-                        <div class="radio-group">
+                    <div class="question">
+                        <h4>2. Qual o nível de controle sobre fornecedores e parceiros?</h4>
+                        <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="q2" value="1">
-                                Frequentes interrupções (menos de 95%)
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q2" value="2">
-                                Algumas interrupções (95-98%)
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q2" value="3">
-                                Disponibilidade razoável (98-99%)
+                                <input type="radio" name="q2" value="5">
+                                Total - Due diligence completa e monitoramento contínuo
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="q2" value="4">
-                                Alta disponibilidade (99-99.9%)
+                                Alto - Processos estruturados de gestão
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="q2" value="5">
-                                Disponibilidade crítica (99.9%+)
+                                <input type="radio" name="q2" value="3">
+                                Médio - Controles básicos implementados
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q2" value="2">
+                                Baixo - Controles limitados
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q2" value="1">
+                                Nenhum - Sem controles estabelecidos
                             </label>
                         </div>
                     </div>
 
-                    <!-- Pergunta 3 -->
-                    <div class="question-group">
-                        <div class="question-title">3. Como você gerencia e monitora seus fornecedores e terceiros?</div>
-                        <div class="radio-group">
+                    <div class="question">
+                        <h4>3. Como está a conectividade e performance dos seus sistemas?</h4>
+                        <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="q3" value="1">
-                                Não temos controle sobre terceiros
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q3" value="2">
-                                Controle básico e informal
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q3" value="3">
-                                Processo estruturado mas manual
+                                <input type="radio" name="q3" value="5">
+                                Excelente - Alta performance e disponibilidade
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="q3" value="4">
-                                Gestão automatizada e monitoramento
+                                Boa - Performance satisfatória
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="q3" value="5">
-                                Gestão integrada com due diligence contínua
+                                <input type="radio" name="q3" value="3">
+                                Regular - Algumas limitações
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q3" value="2">
+                                Ruim - Problemas frequentes
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q3" value="1">
+                                Péssima - Conectividade inadequada
                             </label>
                         </div>
                     </div>
 
-                    <!-- Pergunta 4 -->
-                    <div class="question-group">
-                        <div class="question-title">4. Qual o nível de conectividade e performance da sua rede?</div>
-                        <div class="radio-group">
+                    <div class="question">
+                        <h4>4. Qual o nível de segurança da informação implementado?</h4>
+                        <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="q4" value="1">
-                                Conectividade lenta e instável
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q4" value="2">
-                                Conectividade básica com limitações
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q4" value="3">
-                                Conectividade adequada para operação
+                                <input type="radio" name="q4" value="5">
+                                Avançado - Conformidade total com LGPD e padrões internacionais
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="q4" value="4">
-                                Alta performance com redundância
+                                Bom - Principais controles implementados
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="q4" value="5">
-                                Conectividade premium com múltiplas rotas
+                                <input type="radio" name="q4" value="3">
+                                Básico - Controles essenciais
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q4" value="2">
+                                Limitado - Poucos controles
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q4" value="1">
+                                Inexistente - Sem controles de segurança
                             </label>
                         </div>
                     </div>
 
-                    <!-- Pergunta 5 -->
-                    <div class="question-group">
-                        <div class="question-title">5. Como está a conformidade da sua empresa com a LGPD e outras regulamentações?</div>
-                        <div class="radio-group">
+                    <div class="question">
+                        <h4>5. Como você monitora e gerencia a reputação digital da empresa?</h4>
+                        <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="q5" value="1">
-                                Não estamos em conformidade
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q5" value="2">
-                                Conformidade básica e parcial
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="q5" value="3">
-                                Conformidade adequada com gaps
+                                <input type="radio" name="q5" value="5">
+                                Proativo - Monitoramento contínuo e estratégia definida
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="q5" value="4">
-                                Alta conformidade com monitoramento
+                                Estruturado - Processos regulares de monitoramento
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="q5" value="5">
-                                Conformidade exemplar e proativa
+                                <input type="radio" name="q5" value="3">
+                                Básico - Monitoramento esporádico
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q5" value="2">
+                                Reativo - Apenas quando surgem problemas
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="q5" value="1">
+                                Inexistente - Sem monitoramento
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-chart-line"></i>
-                    Gerar Diagnóstico Reputacional
-                </button>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-large">
+                        <i class="fas fa-chart-line"></i>
+                        Gerar Diagnóstico Reputacional
+                    </button>
+                </div>
             </form>
 
             <!-- Results Section -->
-            <div id="results" class="results-section">
+            <div class="results" id="results">
+                <h2>Resultado do seu Diagnóstico</h2>
                 <div class="score-display">
-                    <div class="score-number" id="scoreNumber">0</div>
-                    <div class="score-label" id="scoreLabel">Pontuação</div>
+                    <span class="score-number" id="scoreNumber">0</span>%
+                    <div class="score-label" id="scoreLabel">Calculando...</div>
                 </div>
-                
                 <div class="recommendations">
-                    <h3><i class="fas fa-lightbulb"></i> Recomendações Personalizadas</h3>
+                    <h3>Recomendações Personalizadas</h3>
                     <div id="recommendationsList"></div>
-                    
-                    <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
-                        <h4>Pronto para Transformar sua Reputação Digital?</h4>
-                        <p>Entre em contato conosco para uma consultoria personalizada</p>
-                        <a href="index.html#contato" class="btn btn-primary">
-                            <i class="fas fa-phone"></i>
-                            Falar com Especialista
-                        </a>
-                    </div>
                 </div>
-            </div>
-
-            <div class="back-to-site">
-                <a href="index.html">
-                    <i class="fas fa-arrow-left"></i>
-                    Voltar ao Site Principal
-                </a>
             </div>
         </div>
-    </section>
+    </main>
 
-    <script>
-        // Diagnóstico Reputacional Script
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('diagnosticForm');
-            const resultsSection = document.getElementById('results');
-            
-            // Handle radio button selection styling
-            document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    // Remove selected class from all options in this question
-                    const questionName = this.name;
-                    document.querySelectorAll(`input[name="${questionName}"]`).forEach(r => {
-                        r.closest('.radio-option').classList.remove('selected');
-                    });
-                    // Add selected class to chosen option
-                    this.closest('.radio-option').classList.add('selected');
-                });
-            });
-            
-            // Handle form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Calculate score
-                let totalScore = 0;
-                let answeredQuestions = 0;
-                
-                for (let i = 1; i <= 5; i++) {
-                    const answer = document.querySelector(`input[name="q${i}"]:checked`);
-                    if (answer) {
-                        totalScore += parseInt(answer.value);
-                        answeredQuestions++;
-                    }
-                }
-                
-                if (answeredQuestions < 5) {
-                    alert('Por favor, responda todas as perguntas para gerar o diagnóstico.');
-                    return;
-                }
-                
-                // Calculate percentage score
-                const percentageScore = Math.round((totalScore / 25) * 100);
-                
-                // Display results
-                displayResults(percentageScore);
-                
-                // Scroll to results
-                resultsSection.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            function displayResults(score) {
-                document.getElementById('scoreNumber').textContent = score;
-                document.getElementById('scoreLabel').textContent = getScoreLabel(score);
-                
-                const recommendations = getRecommendations(score);
-                const recommendationsList = document.getElementById('recommendationsList');
-                
-                recommendationsList.innerHTML = recommendations.map(rec => `
-                    <div class="recommendation-item">
-                        <div class="recommendation-title">${rec.title}</div>
-                        <div>${rec.description}</div>
-                    </div>
-                `).join('');
-                
-                resultsSection.style.display = 'block';
-            }
-            
-            function getScoreLabel(score) {
-                if (score >= 80) return 'Excelente - Reputação Sólida';
-                if (score >= 60) return 'Bom - Reputação Estável';
-                if (score >= 40) return 'Regular - Reputação em Risco';
-                if (score >= 20) return 'Baixo - Reputação Vulnerável';
-                return 'Crítico - Reputação em Perigo';
-            }
-            
-            function getRecommendations(score) {
-                const recommendations = [];
-                
-                if (score < 80) {
-                    recommendations.push({
-                        title: 'Fortaleça sua Infraestrutura Digital',
-                        description: 'Invista em data centers de classe mundial para garantir máxima disponibilidade e segurança.'
-                    });
-                }
-                
-                if (score < 70) {
-                    recommendations.push({
-                        title: 'Implemente Gestão de Terceiros',
-                        description: 'Proteja sua reputação controlando rigorosamente fornecedores e parceiros.'
-                    });
-                }
-                
-                if (score < 60) {
-                    recommendations.push({
-                        title: 'Melhore sua Conectividade',
-                        description: 'Acelere sua presença digital com conexões diretas e seguras.'
-                    });
-                }
-                
-                if (score < 50) {
-                    recommendations.push({
-                        title: 'Reforce a Segurança da Informação',
-                        description: 'Implemente proteção abrangente de dados e conformidade com LGPD.'
-                    });
-                }
-                
-                if (recommendations.length === 0) {
-                    recommendations.push({
-                        title: 'Mantenha a Excelência',
-                        description: 'Continue investindo em inovação e monitoramento contínuo para manter sua reputação sólida.'
-                    });
-                }
-                
-                return recommendations;
-            }
-        });
-    </script>
+    <script src="js/diagnostic.js"></script>
 </body>
 </html>
 
