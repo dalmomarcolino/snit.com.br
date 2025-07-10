@@ -6,7 +6,318 @@
     <title>SN IT - Reputação como Ativo Estratégico</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand h1 {
+            color: #2d5aa0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #e2e8f0;
+            color: #2d5aa0;
+        }
+
+        .nav-link.active {
+            background: #38a169;
+            color: white;
+        }
+
+        .nav-link.btn-primary {
+            background: #2d5aa0;
+            color: white;
+        }
+
+        .nav-link.btn-primary:hover {
+            background: #2c5282;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #4a5568;
+            color: white;
+            padding: 80px 0;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #2d5aa0;
+            color: white;
+            border-color: #2d5aa0;
+        }
+
+        .btn-primary:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+        }
+
+        /* Content Section */
+        .content {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .content h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .content h3 {
+            color: #2d5aa0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* Partners Section */
+        .partners {
+            background: #f7fafc;
+            padding: 80px 0;
+        }
+
+        .partners h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .partner-item {
+            background: white;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-item h3 {
+            color: #2d5aa0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .partner-item p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* Cases Section */
+        .cases {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .cases h2 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .cases p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 50px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d5aa0;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid #2d5aa0;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial cite {
+            font-weight: 600;
+            color: #2d5aa0;
+            font-style: normal;
+        }
+
+        .testimonial .title {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        /* Made with Manus */
+        .manus-credit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(139, 69, 19, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .manus-credit:hover {
+            background: rgba(139, 69, 19, 1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .content h2 {
+                font-size: 2rem;
+            }
+
+            .partners h2 {
+                font-size: 2rem;
+            }
+
+            .cases h2 {
+                font-size: 2rem;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -18,17 +329,11 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#solucoes" class="nav-link">Soluções</a></li>
-                    <li><a href="#parceiros" class="nav-link">Parceiros</a></li>
-                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
-                    <li><a href="diagnostico.html" class="nav-link btn-diagnostico">Diagnóstico Gratuito</a></li>
+                    <li><a href="solucoes.html" class="nav-link">Soluções</a></li>
+                    <li><a href="parceiros.html" class="nav-link">Parceiros</a></li>
+                    <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
+                    <li><a href="contato.html" class="nav-link">Contato</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
         </nav>
     </header>
@@ -36,242 +341,109 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Sua Reputação é seu Ativo mais Valioso</h1>
-                <p>Conectamos soluções que protegem, fortalecem e elevam a reputação da sua empresa no mundo digital</p>
-                <div class="hero-buttons">
-                    <a href="diagnostico.html" class="btn btn-primary">
-                        <i class="fas fa-chart-line"></i>
-                        Proteja sua Reputação
-                    </a>
-                    <a href="#solucoes" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i>
-                        Saiba Mais
-                    </a>
+            <h1>Sua Reputação é seu Ativo mais Valioso</h1>
+            <p>Conectamos soluções que protegem, fortalecem e elevam a reputação da sua empresa no mundo digital</p>
+            <a href="solucoes.html" class="btn btn-primary">
+                <i class="fas fa-shield-alt"></i>
+                Proteja sua Reputação
+            </a>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content">
+        <div class="container">
+            <p>No universo empresarial atual, sua reputação digital não é apenas um reflexo da sua marca — é seu ativo mais estratégico. A SN IT nasce com uma missão clara: transformar a maneira como as empresas protegem e potencializam sua reputação através de soluções integradas de tecnologia.</p>
+            
+            <p>Em um mundo onde um único incidente pode comprometer anos de construção de confiança, oferecemos a combinação perfeita entre segurança da informação, conectividade confiável e gestão estratégica de terceiros. Porque entendemos que reputação não se negocia, se constrói.</p>
+
+            <h2>O Poder da Reputação</h2>
+            <p>A reputação de uma empresa no ambiente digital é formada por cada interação, cada transação e cada bit de dados que circula em seus sistemas. Construí-la leva tempo, mas perdê-la pode acontecer em segundos. Por isso, desenvolvemos uma abordagem integrada que protege e fortalece este ativo insubstituível.</p>
+
+            <h3>Proteja seus dados, proteja sua imagem</h3>
+            <p>Cada vazamento de dados não compromete apenas informações — compromete a confiança depositada em sua marca. Nossas soluções de segurança da informação transformam vulnerabilidades em fortalezas, garantindo que sua reputação permaneça intacta mesmo diante das ameaças mais sofisticadas.</p>
+
+            <h3>Conexões confiáveis para um negócio respeitado</h3>
+            <p>Em um mundo onde a disponibilidade é sinônimo de credibilidade, oferecemos infraestrutura de conectividade que não apenas liga sistemas — constrói pontes de confiança entre sua empresa e seus clientes. Porque cada segundo de instabilidade é um risco para sua reputação.</p>
+
+            <h3>Parceiros alinhados, reputação fortalecida</h3>
+            <p>Sua empresa é julgada não apenas por suas ações, mas também pelas de seus parceiros e fornecedores. Nossa gestão estratégica de terceiros garante que toda a sua cadeia de valor esteja alinhada aos mais altos padrões de conformidade e segurança, blindando sua reputação de riscos externos.</p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2>Nossos Parceiros</h2>
+            <p style="text-align: center; margin-bottom: 50px;">Para proteger e fortalecer algo tão valioso quanto a reputação da sua empresa, reunimos parceiros que são referência em suas áreas de atuação. Cada um deles foi estrategicamente selecionado para compor uma solução integrada que aborda todos os aspectos da reputação digital.</p>
+
+            <div class="partner-item">
+                <h3>Equinix</h3>
+                <p>A infraestrutura digital é a espinha dorsal da sua reputação online. Com a Equinix, oferecemos a base sólida e confiável para que sua empresa mantenha operações ininterruptas e seguras, garantindo que sua presença digital seja tão resiliente quanto sua marca precisa ser.</p>
+            </div>
+
+            <div class="partner-item">
+                <h3>Megaport</h3>
+                <p>Em um mundo onde a velocidade e a confiabilidade das conexões impactam diretamente a percepção do cliente, a Megaport simplifica redes complexas. Transformamos a conectividade em um diferencial competitivo que fortalece a reputação da sua empresa através de experiências digitais superiores.</p>
+            </div>
+
+            <div class="partner-item">
+                <h3>FWD Computers</h3>
+                <p>A segurança da informação deixou de ser um departamento técnico para se tornar um pilar da reputação empresarial. Com as soluções da FWD Computers, sua empresa não apenas protege dados — constrói uma fortaleza digital que transmite confiança e credibilidade ao mercado.</p>
+            </div>
+
+            <div class="partner-item">
+                <h3>Executiva Outsourcing</h3>
+                <p>A gestão de terceiros é um elo frequentemente negligenciado na cadeia de reputação corporativa. Através da Executiva Outsourcing, garantimos que todos os parceiros e fornecedores da sua empresa operem sob os mesmos padrões de excelência e conformidade que definem sua marca.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section class="cases">
+        <div class="container">
+            <h2>Cases de Sucesso</h2>
+            <p>Empresas que transformaram sua reputação digital em vantagem competitiva com nossas soluções integradas.</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Empresas atendidas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5TB+</div>
+                    <div class="stat-label">Dados protegidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime garantido</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Incidentes críticos</div>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <div class="testimonial">
+                    <blockquote>"A abordagem integrada da SN IT transformou nossa visão sobre segurança digital. Hoje, não apenas protegemos nossos dados — construímos confiança com cada interação."</blockquote>
+                    <cite>Carlos Silva</cite>
+                    <div class="title">CIO, Empresa de Tecnologia</div>
+                </div>
+                <div class="testimonial">
+                    <blockquote>"A gestão de terceiros implementada pela SN IT eliminou um ponto cego crítico na nossa estratégia de segurança. Agora temos visibilidade completa sobre nossa cadeia de valor."</blockquote>
+                    <cite>Ana Rodrigues</cite>
+                    <div class="title">Diretora de Compliance, Instituição Financeira</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Soluções Section -->
-    <section id="solucoes" class="solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossas Soluções</h2>
-                <p>Protegemos sua reputação através de soluções integradas e estratégicas</p>
-            </div>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Infraestrutura Digital Segura</h3>
-                    <p>Data centers de classe mundial que garantem máxima disponibilidade e segurança para seus dados críticos.</p>
-                    <ul>
-                        <li>99.999% de uptime garantido</li>
-                        <li>Conectividade global premium</li>
-                        <li>Segurança física e digital</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Gestão de Terceiros</h3>
-                    <p>Blindamos sua reputação contra riscos ocultos através do controle rigoroso de fornecedores e parceiros.</p>
-                    <ul>
-                        <li>Due diligence completa</li>
-                        <li>Monitoramento contínuo</li>
-                        <li>Compliance automatizado</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Conectividade Estratégica</h3>
-                    <p>Acelere sua reputação no mundo digital com conexões diretas e seguras entre seus ambientes.</p>
-                    <ul>
-                        <li>Conexões privadas dedicadas</li>
-                        <li>Latência ultra-baixa</li>
-                        <li>Escalabilidade sob demanda</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Segurança da Informação</h3>
-                    <p>O escudo essencial da sua reputação através de proteção abrangente de dados e privacidade.</p>
-                    <ul>
-                        <li>Proteção de dados pessoais</li>
-                        <li>Conformidade LGPD</li>
-                        <li>Resposta a incidentes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Parceiros Section -->
-    <section id="parceiros" class="partners">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossos Parceiros</h2>
-                <p>Trabalhamos com as melhores marcas do mercado</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-card">
-                    <h3>Equinix</h3>
-                    <p>Líder mundial em infraestrutura digital</p>
-                </div>
-                <div class="partner-card">
-                    <h3>Executiva</h3>
-                    <p>Especialista em gestão de terceiros</p>
-                </div>
-                <div class="partner-card">
-                    <h3>Megaport</h3>
-                    <p>Conectividade de rede como serviço</p>
-                </div>
-                <div class="partner-card">
-                    <h3>FWD</h3>
-                    <p>Soluções em segurança da informação</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Section -->
-    <section id="sobre" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Sobre a SN IT</h2>
-                    <p>Somos mais do que uma provedora de tecnologia; somos os arquitetos da sua confiança digital. Com soluções integradas e uma abordagem focada na proteção e fortalecimento da sua reputação, garantimos que sua marca não apenas sobreviva, mas prospere em um ambiente em constante evolução.</p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-eye"></i>
-                            <span>Visão 360° da Reputação Digital</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-puzzle-piece"></i>
-                            <span>Soluções Integradas e Personalizadas</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Foco em Resultados Mensuráveis</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-handshake"></i>
-                            <span>Parceria de Longo Prazo</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Pronto para Proteger sua Reputação?</h2>
-                <p>Faça um diagnóstico gratuito e descubra como podemos fortalecer sua presença digital</p>
-                <a href="diagnostico.html" class="btn btn-primary btn-large">
-                    <i class="fas fa-rocket"></i>
-                    Começar Diagnóstico Gratuito
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Entre em Contato</h2>
-                <p>Vamos conversar sobre como podemos ajudar sua empresa</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contato@snit.com.br</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+55 (11) 9999-9999</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>São Paulo, SP - Brasil</span>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Seu nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Seu email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Empresa">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Sua mensagem" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i>
-                        Enviar Mensagem
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>SNIT</h3>
-                    <p>Reputação como Ativo Estratégico</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Soluções</h4>
-                        <ul>
-                            <li><a href="#solucoes">Infraestrutura Digital</a></li>
-                            <li><a href="#solucoes">Gestão de Terceiros</a></li>
-                            <li><a href="#solucoes">Conectividade</a></li>
-                            <li><a href="#solucoes">Segurança</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Empresa</h4>
-                        <ul>
-                            <li><a href="#sobre">Sobre Nós</a></li>
-                            <li><a href="#parceiros">Parceiros</a></li>
-                            <li><a href="#contato">Contato</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Recursos</h4>
-                        <ul>
-                            <li><a href="diagnostico.html">Diagnóstico Gratuito</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Casos de Sucesso</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 SN IT. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <!-- Made with Manus Credit -->
+    <a href="#" class="manus-credit">
+        <i class="fas fa-magic"></i>
+        Made with Manus
+    </a>
 </body>
 </html>
 
