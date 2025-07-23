@@ -87,7 +87,7 @@ document.addEventListener('input', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!validateForm(this)) {
@@ -95,24 +95,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+            
             const formData = new FormData(this);
             const data = {
-                nome: formData.get('nome'),
+                name: formData.get('nome'),
                 email: formData.get('email'),
-                empresa: formData.get('empresa'),
-                mensagem: formData.get('mensagem')
+                company: formData.get('empresa'),
+                message: formData.get('mensagem')
             };
             
-            // Simular envio de email (GitHub Pages não suporta backend)
-            // Em produção, isso seria enviado para um endpoint de API
-            console.log('Dados do formulário:', data);
-            
-            // Simular sucesso
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            this.reset();
-            
-            // Para GitHub Pages, podemos usar um serviço como Formspree ou Netlify Forms
-            // Por enquanto, vamos simular o envio
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                    this.reset();
+                } else {
+                    alert('Erro ao enviar mensagem: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente.');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
     }
 });

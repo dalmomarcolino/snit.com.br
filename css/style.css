@@ -172,7 +172,7 @@ section p {
     margin-top: 3rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .solutions {
         grid-template-columns: repeat(2, 1fr);
     }
